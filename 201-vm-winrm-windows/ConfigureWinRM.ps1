@@ -79,5 +79,10 @@ Configure-WinRMHttpsListener $HostName $port
 # Add firewall exception
 Add-FirewallException -port $winrmHttpsPort
 
+# Enable Basic auth:
+Set-Item wsman:\localhost\service\Auth\Basic -Value $true
+# Increase the timeout for long running scripts
+Set-Item wsman:\localhost\MaxTimeoutms -Value 1800000
+
 #################################################################################################################################
 #################################################################################################################################
